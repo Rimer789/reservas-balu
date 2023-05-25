@@ -1,0 +1,20 @@
+.home-page {
+  background: linear-gradient(to bottom right, #100124, #311B92, #1A237E, #0D47A1, #c0a0f3);
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-left: -2%;
+  margin-right: -2%;
+  margin-top: -2%;
+}
+.titulo-llamativo {
+  font-size: 30px;
+  font-weight: bold;
+  color: #1c75be; /* Cambia el color a uno que te guste */
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
