@@ -1,20 +1,34 @@
-.home-page {
-  background: linear-gradient(to bottom right, #100124, #311B92, #1A237E, #0D47A1, #c0a0f3);
-  height: auto;
-  width: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin-left: -2%;
-  margin-right: -2%;
-  margin-top: -2%;
+body {
+  background: linear-gradient(45deg, #d12cc9, #8744c5, #5dc8fa);
+  background-size: 600% 600%;
+  animation: gradientAnimation 5s ease infinite;
 }
-.titulo-llamativo {
-  font-size: 30px;
-  font-weight: bold;
-  color: #1c75be; /* Cambia el color a uno que te guste */
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 20% 50%;
+  }
+}
+
+
+
+h3 {
+  font-size: 18px;
+  animation: pulsate 1s infinite;
+}
+
+
+
+h4 {
   text-align: center;
-  text-transform: uppercase;
-  letter-spacing: 2px;
+  font-size: 30px;
+  background: linear-gradient(to right, #ff9900, #ff5f6d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }

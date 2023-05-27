@@ -40,39 +40,42 @@ const Card = ({ children }) => {
   }, []);
 
 
-  
+
   const Registrarse = async (e) => {
-    const fechaHora = moment(values.startDate).tz('America/La_Paz').format();
+    const fecha = moment(values.fecha).format("YYYY-MM-DD");
+    const hora = values.hora;
+    const fechaHora = moment(`${fecha} ${hora}`, "YYYY-MM-DD HH:mm").tz('America/La_Paz').format();
     const datos = new FormData();
     datos.append('nombre', values.nombre);
     datos.append('fecha_hora', fechaHora);
-    
+
     // Realizar una verificación adicional antes de la inserción
     axios.get('http://localhost/balu_reservas/verificar.php?fecha_hora=' + fechaHora)
-    .then((response) => {
-      if (response.data.existe) {
-        alert("Ya existe una reserva con la misma fecha y hora. Por favor, elige otra fecha y hora.");
-        
-      } else {
-        // Insertar la nueva reserva
-        axios.post('http://localhost/balu_reservas/reservar.php', datos)
-        .then(() => {
-          window.location.reload();
-        })
-        .catch(error => {
-          console.error(error);
-          alert("Error al agregar la reserva. Por favor, intenta nuevamente.");
-        });
-      }
-    })
-    
+      .then((response) => {
+        if (response.data.existe) {
+          alert("Ya existe una reserva con la misma fecha y hora. Por favor, elige otra fecha y hora.");
+
+        } else {
+          // Insertar la nueva reserva
+          axios.post('http://localhost/balu_reservas/reservar.php', datos)
+            .then(() => {
+              window.location.reload();
+            })
+            .catch(error => {
+              console.error(error);
+              alert("Error al agregar la reserva. Por favor, intenta nuevamente.");
+            });
+        }
+      })
+
   };
-  
+
 
   const { handleSubmit, handleChange, values } = useFormik({
     initialValues: {
       nombre: "",
       startDate: new Date(),
+      hora: "8:00",
     },
     onSubmit: (values, { setSubmitting }) => {
       const formattedDate = format(values.startDate, "MM/dd/yyyy HH:mm");
@@ -113,20 +116,24 @@ const Card = ({ children }) => {
   const { minTime, maxTime } = calculateTimeRange(values.startDate);
 
   return (
-    <div>
+    <div className='card-container'>
       <button className="card" onClick={handleOpenModal}>
-        <div class="card-header">Balu</div>
+        <h3 class="card-header">Balu</h3>
         <img className="card-image" src={image1} />
       </button>
       <button className="card" onClick={handleOpenModal1} >
-        <div class="card-header" >otro</div>
+        <h3 class="card-header" >otro</h3>
         <img className="card-image" src={image2} />
       </button>
       <button className="card" onClick={handleOpenModal2}>
         <div class="card-header" >otro2</div>
         <img className="card-image" src={image3} />
       </button>
-      <br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+      <button className="card" onClick={handleOpenModal2}>
+        <div class="card-header" >otro3</div>
+        <img className="card-image" src={image3} />
+      </button>
+ 
       {showModal && (
         <div className="modal11">
           <div className="modal-content">
@@ -148,18 +155,46 @@ const Card = ({ children }) => {
               </label>
               <br />
               <label>Fecha:</label>
-              <DatePicker
-                value={values.startDate}
-                selected={values.startDate}
-                onChange={(date) => handleChange({ target: { name: "startDate", value: date } })}
-                minDate={new Date()}
-                minTime={minTime}
-                maxTime={maxTime}
-                showTimeSelect
-                timeFormat="HH:mm"
-                timeIntervals={30}
-                dateFormat="MM/d/yyyy HH:mm"
+              <input
+                type="date"
+                name="fecha"
+                value={moment(values.fecha).format("YYYY-MM-DD")}
+                onChange={handleChange}
+                min={moment().format("YYYY-MM-DD")} // Permite seleccionar solo la fecha actual o posteriores
+                required
               />
+              <label>Hora:</label>
+              <select
+                name="hora"
+                value={values.hora}
+                onChange={handleChange}
+              >
+                <option value="08:00">8:00 am</option>
+                <option value="08:30">8:30 am</option>
+                <option value="09:00">9:00 am</option>
+                <option value="09:30">9:30 am</option>
+                <option value="10:00">10:00 am</option>
+                <option value="10:30">10:30 am</option>
+                <option value="11:00">11:00 am</option>
+                <option value="11:30">11:30 am</option>
+                <option value="12:00">12:00 pm</option>
+                <option value="12:30">12:30 pm</option>
+                
+                <option value="13:30">1:30 pm</option>
+                <option value="14:00">2:00 pm</option>
+                <option value="14:30">2:30 pm</option>
+                <option value="15:00">3:00 pm</option>
+                <option value="15:30">3:30 pm</option>
+                <option value="16:00">4:00 pm</option>
+                <option value="16:30">4:30 pm</option>
+                <option value="17:00">5:00 pm</option>
+                <option value="17:30">5:30 pm</option>
+                <option value="18:00">6:00 pm</option>
+                <option value="18:30">6:30 pm</option>
+                <option value="19:00">7:00 pm</option>
+                <option value="19:30">7:30 pm</option>
+                <option value="20:00">8:00 pm</option>
+              </select>
 
               <button onClick={handleSubmit} >Reservar</button>
             </form>
@@ -173,15 +208,15 @@ const Card = ({ children }) => {
               &times;
             </span>
             <div>
-      <h1>Reservas para hoy</h1>
-      <ul>
-        {reservas.map(reserva => (
-          <li key={reserva.id}>
-            {reserva.nombre} - {reserva.fecha_hora}
-          </li>
-        ))}
-      </ul>
-    </div>
+              <h1>Reservas para hoy</h1>
+              <ul>
+                {reservas.map(reserva => (
+                  <li key={reserva.id}>
+                    {reserva.nombre} - {reserva.fecha_hora}
+                  </li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       )}
