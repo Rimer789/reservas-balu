@@ -116,3 +116,59 @@ border-color: black;
   font-weight: bold;
   cursor: pointer;
 }
+
+select {
+  width: 200px; /* Ancho del select */
+  padding: 10px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño de fuente */
+  border: 1px solid #40045c; /* Borde */
+  border-radius: 5px; /* Borde redondeado */
+  background-color: #c2cee4; /* Color de fondo */
+  color: #333; /* Color de texto */
+}
+
+/* Estilos al hacer hover en el select */
+select:hover {
+  border-color: #2a033b; /* Borde al hacer hover */
+}
+
+/* Estilos al seleccionar una opción */
+select:focus {
+  outline: none; /* Quita el contorno al seleccionar */
+  box-shadow: 0 0 5px #bd9cc4; /* Sombra al seleccionar */
+}
+
+/* Estilos para las opciones del select */
+select option {
+  background-color: #b29dc5; 
+  color: #000000; /* Color de texto de las opciones */
+}
+
+label {
+  display: inline-block; /* Muestra el label en línea */
+  font-size: 20px; /* Tamaño de fuente */
+  font-weight: bold; /* Peso de la fuente */
+  color: #333; /* Color de texto */
+  margin-bottom: 5px; /* Margen inferior */
+}
+
+/* Estilos al hacer hover en el label */
+input[type="date"] {
+  padding: 8px;
+  background-color: #c2cee4; /* Color de fondo */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 200px;
+  border: 1px solid #40045c; /* Borde */
+}
+input {
+  padding: 8px;
+  background-color: #c2cee4; /* Color de fondo */
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  width: 200px;
+  border: 1px solid #40045c; /* Borde */
+}
+
