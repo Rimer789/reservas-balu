@@ -1,0 +1,27 @@
+.home-page {
+    background: linear-gradient(45deg, #272727, #7f5a83);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .content {
+    text-align: center;
+  }
+  
+  h1 {
+    color: #ffffff;
+    font-size: 32px;
+    margin-bottom: 20px;
+  }
+  
+  .button {
+    background-color: #ffffff;
+    color: #7f5a83;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
