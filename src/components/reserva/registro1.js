@@ -13,12 +13,12 @@ const Registro = () => {
     const datos = new FormData();
     datos.append('nombre', values.nombre);
     datos.append('fecha_hora', fechaHora);
-    axios.get('http://localhost/balu_reservas/verificar.php?fecha_hora=' + fechaHora)
+    axios.get('https://backend12.000webhostapp.com/verificarI.php?fecha_hora=' + fechaHora)
       .then((response) => {
         if (response.data.existe) {
           alert('Ya existe una reserva con la misma fecha y hora. Por favor, elige otra fecha y hora.');
         } else {
-          axios.post('http://localhost/balu_reservas/reservar.php', datos)
+          axios.post('https://backend12.000webhostapp.com/reservarI.php', datos)
             .then(() => {
               window.location.reload();
             })

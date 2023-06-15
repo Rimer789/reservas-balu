@@ -8,7 +8,7 @@ const Reservas = () => {
 
     useEffect(() => {
       const today = new Date().toISOString().substr(0, 10);
-      const url = `http://localhost/balu_reservas/api.php?fecha=${today}`;
+      const url = `http://localhost/balu_reservas/apiII.php?fecha=${today}`;
       fetch(url)
         .then(response => response.json())
         .then(data => setReservas(data));

@@ -4,26 +4,21 @@ import moment from 'moment-timezone';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import { useFormik } from 'formik';
-import './registro.css'
 
 const Registro = () => {
   const Registrarse = async (e) => {
     const fecha = moment(values.fecha).format('YYYY-MM-DD');
     const hora = values.hora;
-    const fechaHora = moment(`${fecha} ${hora}`, 'YYYY-MM-DD HH:mm')
-      .tz('America/La_Paz')
-      .format();
+    const fechaHora = moment(`${fecha} ${hora}`, 'YYYY-MM-DD HH:mm').tz('America/La_Paz').format();
     const datos = new FormData();
     datos.append('nombre', values.nombre);
     datos.append('fecha_hora', fechaHora);
-    axios
-      .get('http://localhost/balu_reservas/verificar.php?fecha_hora=' + fechaHora)
+    axios.get('https://backend12.000webhostapp.com/verificar.php?fecha_hora=' + fechaHora)
       .then((response) => {
         if (response.data.existe) {
           alert('Ya existe una reserva con la misma fecha y hora. Por favor, elige otra fecha y hora.');
         } else {
-          axios
-            .post('http://localhost/balu_reservas/reservar.php', datos)
+          axios.post('https://backend12.000webhostapp.com/reservar.php', datos)
             .then(() => {
               window.location.reload();
             })
@@ -49,11 +44,49 @@ const Registro = () => {
     },
   });
 
+  const styles = {
+    container: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    title: {
+      fontSize: '24px',
+      marginBottom: '20px',
+    },
+    form: {
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    label: {
+      marginBottom: '10px',
+    },
+    input: {
+      padding: '5px',
+      marginBottom: '10px',
+    },
+    button: {
+      padding: '10px 20px',
+      backgroundColor: 'blue',
+      color: 'white',
+      border: 'none',
+      borderRadius: '4px',
+      cursor: 'pointer',
+      marginBottom: '10px',
+    },
+    link: {
+      textDecoration: 'none',
+    },
+  };
+
   return (
-    <div className="container">
-      <h1>Bienvenidos a la Barbería</h1>
-      <form onSubmit={handleSubmit} className="form">
-        <label>
+    <div style={styles.container}>
+      <h1 style={styles.title}>Bienvenidos a la Barbería</h1>
+      <form onSubmit={handleSubmit} style={styles.form}>
+        <label style={styles.label}>
           Nombre:
           <br />
           <input
@@ -63,10 +96,11 @@ const Registro = () => {
             value={values.nombre}
             onChange={handleChange}
             required
+            style={styles.input}
           />
         </label>
         <br />
-        <label>Fecha:</label>
+        <label style={styles.label}>Fecha:</label>
         <input
           type="date"
           name="fecha"
@@ -74,9 +108,10 @@ const Registro = () => {
           onChange={handleChange}
           min={moment().format('YYYY-MM-DD')}
           required
+          style={styles.input}
         />
-        <label>Hora:</label>
-        <select name="hora" value={values.hora} onChange={handleChange}>
+        <label style={styles.label}>Hora:</label>
+        <select name="hora" value={values.hora} onChange={handleChange} style={styles.input}>
           <option value="08:00">8:00 am</option>
           <option value="08:30">8:30 am</option>
           <option value="09:00">9:00 am</option>
@@ -103,11 +138,13 @@ const Registro = () => {
           <option value="20:00">8:00 pm</option>
         </select>
 
-        <button type="submit">Reservar</button>
+        <button type="submit" style={styles.button}>
+          Reservar
+        </button>
       </form>
       <br />
-      <Link to="/card">
-        <button>atras</button>
+      <Link to="/card" style={styles.link}>
+        <button style={styles.button}>Atrás</button>
       </Link>
     </div>
   );
