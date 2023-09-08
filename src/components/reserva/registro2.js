@@ -70,7 +70,7 @@ const Registro = () => {
   const { handleSubmit, handleChange, values } = useFormik({
     initialValues: {
       nombre: '',
-      fecha: moment().add(1, 'day').format('YYYY-MM-DD'), // Configura la fecha inicial como el día siguiente
+      fecha: moment().format('YYYY-MM-DD'), // Configura la fecha inicial como la fecha actual
       hora: '08:00',
     },
     onSubmit: (values, { setSubmitting }) => {
@@ -97,9 +97,9 @@ const Registro = () => {
         <input
           type="date"
           name="fecha"
-          value={moment(values.fecha).format('YYYY-MM-DD')}
+          value={values.fecha}
           onChange={handleChange}
-          min={moment().add(1, 'day').format('YYYY-MM-DD')} // Configura la fecha mínima como el día siguiente
+          min={moment().format('YYYY-MM-DD')} // Configura la fecha mínima como la fecha actual
           required
           className="input"
         />
