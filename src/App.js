@@ -11,6 +11,7 @@ import Reservas2 from './components/ver/reservas2.js';
 import Registro2 from './components/reserva/registro2.js';
 import Reservas3 from './components/ver/reservas3.js';
 import Registro3 from './components/reserva/registro3.js';
+import Comunicado from './components/comunicado/comunicado';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
       <Route path='/registro2' element={<Registro2/>}/>
       <Route path='/reservas3' element={<Reservas3/>}/>
       <Route path='/registro3' element={<Registro3/>}/>
+      <Route path='/comunicado' element={<Comunicado/>}/>
       </Routes>
     </Router>
     </div>

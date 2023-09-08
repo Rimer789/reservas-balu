@@ -14,54 +14,54 @@ const Card = ({ children }) => {
       <div className='card-containe'>
     <Link to="/registro">
       <button className="card">
-        <h3 class="card-header">Balu Barber</h3>
+        <h4 class="card-header">Balu Barber</h4>
         <img className="card-image" src={image1} />
       </button>
       </Link>
       <Link to="/reservas">
-          <button className='buttona'>Mis reservas</button>
+          <buttona className='buttona'>Mis reservas</buttona>
         </Link>
         </div>
         
        <div className='card-containe'>
         <Link to="/registro1">
       <button className="card" >
-        <h3 class="card-header" >Jhon Barber</h3>
+        <h4 class="card-header" >Jhon Barber</h4>
         <img className="card-image" src={image2} />
       </button>
       </Link>
       <Link to="/reservas1">
-          <button className='buttona'>Mis reservas</button>
+      <buttona className='buttona'>Mis reservas</buttona>
         </Link>
         </div>
         <div className='card-containe'>
         <Link to="/registro2">
       <button className="card" >
-        <h3 class="card-header" >Negro Barber</h3>
+        <h4 class="card-header" >Negro Barber</h4>
         <img className="card-image" src={image3} />
       </button>
       </Link>
       <Link to="/reservas2">
-          <button className='buttona'>Mis reservas</button>
+      <buttona className='buttona'>Mis reservas</buttona>
         </Link>
         </div>
         <div className='card-containe'>
         <Link to="/registro3">
       <button className="card" >
-        <h3 class="card-header" >Tika Barber</h3>
+        <h4 class="card-header" >Tika Barber</h4>
         <img className="card-image" src={image3} />
       </button>
       </Link>
       <Link to="/reservas3">
-          <button className='buttona'>Mis reservas</button>
+      <buttona className='buttona'>Mis reservas</buttona>
         </Link>
-    </div>
-    </div>
-    <Link to='/'>
-      <button className='buttona'> atras</button>
+        <br/>
+        <br/>
+        <Link to='/'>
+      <buttona2 className='buttona2'> atras</buttona2>
        </Link>
-       <br/>
-       <br/>
+    </div>
+    </div>
     </div>
     
   );

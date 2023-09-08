@@ -1,117 +1,110 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import moment from 'moment-timezone';
 import { Link } from 'react-router-dom';
-import { format } from 'date-fns';
 import { useFormik } from 'formik';
+import './registro.css';
 
 const Registro = () => {
-  const Registrarse = async (e) => {
+  // Obtén la hora actual en la zona horaria de La Paz
+  const horaActualEnLaPaz = moment().tz('America/La_Paz').format('HH:mm');
+
+  const [disponible, setDisponible] = useState(true);
+
+  const verificarDisponibilidad = async (values) => {
     const fecha = moment(values.fecha).format('YYYY-MM-DD');
     const hora = values.hora;
     const fechaHora = moment(`${fecha} ${hora}`, 'YYYY-MM-DD HH:mm').tz('America/La_Paz').format();
-    const datos = new FormData();
-    datos.append('nombre', values.nombre);
-    datos.append('fecha_hora', fechaHora);
-    axios.get('https://backend12.000webhostapp.com/verificar.php?fecha_hora=' + fechaHora)
-      .then((response) => {
-        if (response.data.existe) {
-          alert('Ya existe una reserva con la misma fecha y hora. Por favor, elige otra fecha y hora.');
-        } else {
-          axios.post('https://backend12.000webhostapp.com/reservar.php', datos)
-            .then(() => {
-              window.location.reload();
-            })
-            .catch((error) => {
-              console.error(error);
-              alert('Error al agregar la reserva. Por favor, intenta nuevamente.');
-            });
-        }
-      });
+
+    // Compara la fecha seleccionada con la fecha actual en La Paz
+    if (moment(fechaHora).isBefore(moment().tz('America/La_Paz').format('YYYY-MM-DD HH:mm'))) {
+      alert('No puedes seleccionar horas pasadas.');
+      return;
+    }
+
+    try {
+      const response = await axios.get(`http://localhost/barber/public/api/reservas/disponibilidad?fecha_hora=${fechaHora}`);
+      console.log('Respuesta de verificación:', response.data);
+
+      const esDisponible = response.data.disponible; // Guarda el valor en una variable temporal
+
+      setDisponible(esDisponible); // Actualiza disponible
+      console.log(esDisponible);
+
+      if (!esDisponible) {
+        console.log('Llegué a este punto'); // Agrega esto antes de la alerta
+        alert('Ya existe una reserva con la misma fecha y hora. Por favor, elige otra fecha y hora.');
+
+      } else {
+        // Si está disponible, puedes continuar con el proceso de registro
+        registrarReserva(values);
+      }
+    } catch (error) {
+      console.error('Error al verificar la disponibilidad de reserva:', error);
+    }
+  };
+
+  const registrarReserva = async (values) => {
+    const fecha = moment(values.fecha).format('YYYY-MM-DD');
+    const hora = values.hora;
+    const fechaHora = moment(`${fecha} ${hora}`, 'YYYY-MM-DD HH:mm:ss').tz('America/La_Paz').format('YYYY-MM-DD HH:mm:ss');
+    const datos = {
+      nombre: values.nombre,
+      fecha_hora: fechaHora,
+    };
+
+    try {
+      const response = await axios.post('http://localhost/barber/public/api/reservas', datos);
+      console.log(response.data);
+      alert('Reserva creada con éxito');
+
+      // Restablece los valores del formulario o redirige al usuario
+      // Por ejemplo, puedes redirigir al usuario a otra página después del registro
+      // history.push('/otra-pagina');
+    } catch (error) {
+      console.error('Error al agregar la reserva:', error);
+      alert('Ya existe otra reserva para este horario');
+    }
   };
 
   const { handleSubmit, handleChange, values } = useFormik({
     initialValues: {
       nombre: '',
-      startDate: new Date(),
-      hora: '8:00',
+      fecha: moment().add(1, 'day').format('YYYY-MM-DD'), // Configura la fecha inicial como el día siguiente
+      hora: '08:00',
     },
     onSubmit: (values, { setSubmitting }) => {
-      const formattedDate = format(values.startDate, 'MM/dd/yyyy HH:mm');
-      console.log({ ...values, startDate: formattedDate });
-      Registrarse();
+      verificarDisponibilidad(values);
       setSubmitting(true);
     },
   });
 
-  const styles = {
-    container: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    title: {
-      fontSize: '24px',
-      marginBottom: '20px',
-    },
-    form: {
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      justifyContent: 'center',
-    },
-    label: {
-      marginBottom: '10px',
-    },
-    input: {
-      padding: '5px',
-      marginBottom: '10px',
-    },
-    button: {
-      padding: '10px 20px',
-      backgroundColor: 'blue',
-      color: 'white',
-      border: 'none',
-      borderRadius: '4px',
-      cursor: 'pointer',
-      marginBottom: '10px',
-    },
-    link: {
-      textDecoration: 'none',
-    },
-  };
-
   return (
-    <div style={styles.container}>
-      <h1 style={styles.title}>Bienvenidos a la Barbería</h1>
-      <form onSubmit={handleSubmit} style={styles.form}>
-        <label style={styles.label}>
-          Nombre:
-          <br />
-          <input
-            type="text"
-            id="nombre"
-            placeholder="Nombres"
-            value={values.nombre}
-            onChange={handleChange}
-            required
-            style={styles.input}
-          />
-        </label>
-        <br />
-        <label style={styles.label}>Fecha:</label>
+    <div className="container">
+      <form onSubmit={handleSubmit} className="form">
+        <label className="label">Nombre:</label>
+        <input
+          type="text"
+          id="nombre"
+          placeholder="Nombres"
+          name="nombre"
+          value={values.nombre}
+          onChange={handleChange}
+          required
+          className="input"
+        />
+        <label className="label">Fecha:</label>
         <input
           type="date"
           name="fecha"
           value={moment(values.fecha).format('YYYY-MM-DD')}
           onChange={handleChange}
-          min={moment().format('YYYY-MM-DD')}
+          min={moment().add(1, 'day').format('YYYY-MM-DD')} // Configura la fecha mínima como el día siguiente
           required
-          style={styles.input}
+          className="input"
         />
-        <label style={styles.label}>Hora:</label>
-        <select name="hora" value={values.hora} onChange={handleChange} style={styles.input}>
+        <label className="label">Hora:</label>
+        <select name="hora" value={values.hora} onChange={handleChange} className="input">
           <option value="08:00">8:00 am</option>
           <option value="08:30">8:30 am</option>
           <option value="09:00">9:00 am</option>
@@ -137,14 +130,13 @@ const Registro = () => {
           <option value="19:30">7:30 pm</option>
           <option value="20:00">8:00 pm</option>
         </select>
-
-        <button type="submit" style={styles.button}>
+        <button type="submit" className="button2">
           Reservar
         </button>
       </form>
       <br />
-      <Link to="/card" style={styles.link}>
-        <button style={styles.button}>Atrás</button>
+      <Link to="/card" className="link">
+        <button1 className="button1">Atrás</button1>
       </Link>
     </div>
   );

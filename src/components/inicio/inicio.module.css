@@ -1,27 +1,114 @@
 .home-page {
-    background: linear-gradient(45deg, #272727, #7f5a83);
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../assets/fondo.jpg');
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: fixed;
+  overflow: hidden; /* Evita el desbordamiento en dispositivos móviles */
+}
+
+.content {
+  text-align: center;
+}
+
+@keyframes wordAppear {
+  0% {
+    opacity: 0;
+    transform: translateX(-50%);
   }
-  
-  .content {
-    text-align: center;
+  20% {
+    opacity: 1;
+    transform: translateX(0%);
   }
-  
-  h1 {
-    color: #ffffff;
-    font-size: 32px;
-    margin-bottom: 20px;
+  100% {
+    opacity: 1;
+    transform: translateX(0%);
   }
-  
-  .button {
-    background-color: #ffffff;
-    color: #7f5a83;
-    border: none;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
+}
+
+h1 {
+  margin-top: -320px;
+  font-size: 6vw;
+  margin-bottom: 20px;
+  font-family: "Spicy Rice", cursive;
+  white-space: nowrap;
+  animation: wordAppear 4s ease-out infinite;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff9900, #d19e13, #c2890e, #fa9a0b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Aplica a cada palabra */
+h1 span {
+  display: inline-block;
+  opacity: 0;
+  animation: wordAppear 4s ease-out infinite;
+  animation-delay: 0.5s;
+}
+h2 {
+  position: fixed;
+  margin-top: 330px;
+  font-size: 4vw;
+  margin-bottom: 20px;
+  font-family: "Spicy Rice", cursive;
+  white-space: nowrap;
+  animation: wordAppear 4s ease-out infinite;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff9900, #d19e13, #c2890e, #fa9a0b);
+  background-clip: text;
+  color: transparent;
+}
+
+/* Aplicar estilos específicos para dispositivos móviles (ancho <= 768px) */
+@media (max-width: 768px) {
+  h2 {
+    position: absolute; /* Cambiar la posición para dispositivos móviles */
+    font-size: 18px;
+    margin-top: 120%; /* Ajustar la posición vertical */
+    margin-left: 35%;
   }
-  
+}
+
+
+
+
+.button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  border: none;
+  background: linear-gradient(to right, #ff9900, #994c00);
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.button:hover {
+  background: linear-gradient(to right, #994c00, #ff9900);
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  button {
+    position: absolute; /* Cambiar la posición para dispositivos móviles */
+    font-size: 18px;
+    margin-top: 10%; /* Ajustar la posición vertical */
+    margin-left: 0%;
+  }
+}
+
+/* inicio.module.css */
+/* inicio.module.css (o tu archivo CSS) */
+.highlight {
+  background-color: yellow; /* Cambia el color de fondo del primer elemento */
+  font-weight: bold; /* Puedes aplicar otros estilos para resaltar */
+}

@@ -1,0 +1,97 @@
+.home-page {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../assets/fondo.jpg');
+    background-size: cover;
+    background-position: center right;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: fixed;
+    overflow: hidden; /* Evita el desbordamiento en dispositivos móviles */
+  }
+  
+  .content {
+    text-align: center;
+  }
+  .reservas-table th,
+  .reservas-table td {
+    border: 1px solid #dddddd;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  /* Background color gradient for the table header */
+  .reservas-table thead {
+    background: linear-gradient(to bottom, #f0f0f0, #d0d0d0);
+  }
+  
+  /* Background color gradient for the table rows */
+  .reservas-table tbody tr:nth-child(odd) {
+    background: linear-gradient(to bottom, rgba(200, 200, 255, 0.8), rgba(220, 220, 255, 0.8));
+  }
+  
+  .reservas-table tbody tr:nth-child(even) {
+    background: linear-gradient(to bottom, rgba(180, 180, 255, 0.8), rgba(200, 200, 255, 0.8));
+  }
+  
+  /* Style for the first row (highlighted) */
+  .reservas-table tbody tr:first-child {
+    background: linear-gradient(to bottom, rgba(255, 255, 200, 0.8), rgba(255, 255, 220, 0.8));
+  }
+
+  .buttonq {
+    position: absolute; 
+    margin-top: -20%; /* Ajustar la posición vertical */
+    margin-left: 30%;
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    background: linear-gradient(to right, #ff9900, #994c00);
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .buttonq:hover {
+    background: linear-gradient(to right, #994c00, #ff9900);
+    transform: scale(1.05);
+  }
+  
+  @media (max-width: 768px) {
+    .buttonq {
+      position: absolute; /* Cambiar la posición para dispositivos móviles */
+      font-size: 18px;
+      margin-top: -90%; /* Ajustar la posición vertical */
+      margin-left: -45%;
+    }
+  }
+
+  h3 {
+    position: fixed;
+    margin-top: -150px;
+    margin-left: -80px;
+    font-size: 4vw;
+    margin-bottom: 20px;
+    font-family: "Spicy Rice", cursive;
+    white-space: nowrap;
+    animation: wordAppear 4s ease-out infinite;
+    font-weight: bold;
+    background: linear-gradient(to right, #ff9900, #d19e13, #c2890e, #fa9a0b);
+    background-clip: text;
+    color: transparent;
+  }
+  
+  /* Aplicar estilos específicos para dispositivos móviles (ancho <= 768px) */
+  @media (max-width: 768px) {
+    h3 {
+      position: absolute; /* Cambiar la posición para dispositivos móviles */
+      font-size: 25px;
+      margin-top: -40%; /* Ajustar la posición vertical */
+      margin-left: 10%;
+    }
+  }
