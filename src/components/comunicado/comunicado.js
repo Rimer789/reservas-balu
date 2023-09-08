@@ -12,7 +12,7 @@ const Comunicado = () => {
 
   const obtenerComunicados = async () => {
     try {
-      const response = await axios.get('http://localhost/barber/public/api/comunicados');
+      const response = await axios.get('https://barber-production-1d18.up.railway.app/api/comunicados');
       setComunicados(response.data);
     } catch (error) {
       console.error('Error al obtener comunicados:', error);
@@ -21,7 +21,7 @@ const Comunicado = () => {
 
   const crearComunicado = async () => {
     try {
-      const response = await axios.post('http://localhost/barber/public/api/comunicado', {
+      const response = await axios.post('https://barber-production-1d18.up.railway.app/api/comunicado', {
         descripcion: nuevoComunicado,
       });
 
@@ -37,7 +37,7 @@ const Comunicado = () => {
 
   const eliminarComunicado = async (id) => {
     try {
-      await axios.delete(`http://localhost/barber/public/api/comunicado/${id}`);
+      await axios.delete(`https://barber-production-1d18.up.railway.app/api/comunicado/${id}`);
       // Filtrar los comunicados para eliminar el que corresponde al ID
       setComunicados(comunicados.filter((comunicado) => comunicado.id !== id));
     } catch (error) {

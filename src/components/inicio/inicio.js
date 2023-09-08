@@ -14,7 +14,7 @@ const Inicio = () => {
 
   const obtenerComunicados = async () => {
     try {
-      const response = await axios.get('http://localhost/barber/public/api/comunicados');
+      const response = await axios.get('https://barber-production-1d18.up.railway.app/api/comunicados');
       setComunicados(response.data);
     } catch (error) {
       console.error('Error al obtener comunicados:', error);

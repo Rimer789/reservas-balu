@@ -18,9 +18,9 @@ const Card = ({ children }) => {
         <img className="card-image" src={image1} />
       </button>
       </Link>
-      <Link to="/reservas">
+     {/* <Link to="/reservas">
           <buttona className='buttona'>Mis reservas</buttona>
-        </Link>
+        </Link> */}
         </div>
         
        <div className='card-containe'>
@@ -30,9 +30,9 @@ const Card = ({ children }) => {
         <img className="card-image" src={image2} />
       </button>
       </Link>
-      <Link to="/reservas1">
+      {/* <Link to="/reservas1">
       <buttona className='buttona'>Mis reservas</buttona>
-        </Link>
+        </Link> */}
         </div>
         <div className='card-containe'>
         <Link to="/registro2">
@@ -41,9 +41,9 @@ const Card = ({ children }) => {
         <img className="card-image" src={image3} />
       </button>
       </Link>
-      <Link to="/reservas2">
+      {/* <Link to="/reservas2">
       <buttona className='buttona'>Mis reservas</buttona>
-        </Link>
+        </Link> */}
         </div>
         <div className='card-containe'>
         <Link to="/registro3">
@@ -52,9 +52,9 @@ const Card = ({ children }) => {
         <img className="card-image" src={image3} />
       </button>
       </Link>
-      <Link to="/reservas3">
+      {/* <Link to="/reservas3">
       <buttona className='buttona'>Mis reservas</buttona>
-        </Link>
+        </Link> */}
         <br/>
         <br/>
         <Link to='/'>

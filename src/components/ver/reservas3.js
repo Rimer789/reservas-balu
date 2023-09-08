@@ -8,7 +8,7 @@ const Reservas = () => {
 
   useEffect(() => {
     const today = new Date().toISOString().substr(0, 10);
-    const url = `http://localhost/barber/public/api/reservas3/dia-actual`;
+    const url = `https://barber-production-1d18.up.railway.app/api/reservas3/dia-actual`;
     
     fetch(url)
       .then(response => response.json())

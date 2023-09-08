@@ -23,7 +23,7 @@ const Registro = () => {
     }
 
     try {
-      const response = await axios.get(`http://localhost/barber/public/api/reservas2/disponibilidad?fecha_hora=${fechaHora}`);
+      const response = await axios.get(`https://barber-production-1d18.up.railway.app/api/reservas2/disponibilidad?fecha_hora=${fechaHora}`);
       console.log('Respuesta de verificación:', response.data);
 
       const esDisponible = response.data.disponible; // Guarda el valor en una variable temporal
@@ -54,7 +54,7 @@ const Registro = () => {
     };
 
     try {
-      const response = await axios.post('http://localhost/barber/public/api/reservas2', datos);
+      const response = await axios.post('https://barber-production-1d18.up.railway.app/api/reservas2', datos);
       console.log(response.data);
       alert('Reserva creada con éxito');
 
