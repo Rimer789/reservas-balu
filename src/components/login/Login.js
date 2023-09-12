@@ -1,48 +1,55 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [usuario, setUsuario] = useState('');
   const [contrasena, setContrasena] = useState('');
-  const [error, setError] = useState('');
 
-  const handleLogin = async (e) => {
+  const handleLogin = (e) => {
     e.preventDefault();
-    try {
-      const response = await axios.post('http://localhost/barber/public/api/login', { usuario, contrasena });
-      const token = response.data.token;
-      // Almacena el token en localStorage o en el estado de tu aplicación según sea necesario
-      // Redirige al usuario a la página principal o realiza otras acciones necesarias
-    } catch (err) {
-      setError('Credenciales incorrectas');
+    if (usuario === 'administrador' && contrasena === 'admin12345') {
+      window.location.href = '/funciones';
+    } else if(usuario === 'barber1' && contrasena === 'barber') {
+      window.location.href = '/reservas1'; 
+    }else if(usuario === 'barber2' && contrasena === 'barber') {
+      window.location.href = '/reservas2'; 
+    }else if(usuario === 'barber3' && contrasena === 'barber') {
+      window.location.href = '/reservas3'; 
+    } else {
+      alert('Credenciales incorrectas');
     }
   };
 
   return (
-    <div>
-      <h2>Iniciar Sesión</h2>
-      <form onSubmit={handleLogin}>
+    <div className="container">
+      <form onSubmit={handleLogin} className="form">
         <div>
-          <label>Usuario:</label>
+          <label className="label">Usuario:</label>
           <input
+          className="input"
             type="text"
             value={usuario}
             onChange={(e) => setUsuario(e.target.value)}
           />
         </div>
         <div>
-          <label>Contraseña:</label>
+          <label className="label">Contraseña:</label>
           <input
+          className="input"
             type="password"
             value={contrasena}
             onChange={(e) => setContrasena(e.target.value)}
           />
         </div>
         <div>
-          <button type="submit">Iniciar Sesión</button>
+          <button type="submit" className="button2">Login</button>
         </div>
+        <Link to='/'>
+          <button className='button'>atras</button>
+        </Link>
       </form>
-      {error && <p>{error}</p>}
+
+
     </div>
   );
 };

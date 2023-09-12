@@ -53,14 +53,13 @@ h1 span {
   animation: wordAppear 4s ease-out infinite;
   animation-delay: 0.5s;
 }
-h2 {
-  position: fixed;
-  margin-top: 330px;
+.titulo {
+  top: -40%;
+  left: 0%;
   font-size: 4vw;
   margin-bottom: 20px;
   font-family: "Spicy Rice", cursive;
   white-space: nowrap;
-  animation: wordAppear 4s ease-out infinite;
   font-weight: bold;
   background: linear-gradient(to right, #ff9900, #d19e13, #c2890e, #fa9a0b);
   background-clip: text;
@@ -69,11 +68,10 @@ h2 {
 
 /* Aplicar estilos específicos para dispositivos móviles (ancho <= 768px) */
 @media (max-width: 768px) {
-  h2 {
-    position: absolute; /* Cambiar la posición para dispositivos móviles */
-    font-size: 18px;
-    margin-top: 120%; /* Ajustar la posición vertical */
-    margin-left: 35%;
+  .titulo {
+    
+    font-size: 28px;
+    
   }
 }
 
@@ -107,11 +105,12 @@ h2 {
 }
 
 .buttonL {
+  position: relative;
   display: inline-block;
   padding: 10px 20px;
   font-size: 16px;
-  top: -3%;
-  left: 70%;
+  top: 20%;
+  left: 40%; 
   border: none;
   background: linear-gradient(to right, #b610c5, #48c9ce);
   color: #fff;
@@ -127,10 +126,9 @@ h2 {
 
 @media (max-width: 768px) {
   .buttonL {
-    position: absolute; /* Cambiar la posición para dispositivos móviles */
+   
     font-size: 18px;
-    margin-top: 10%; /* Ajustar la posición vertical */
-    margin-left: 0%;
+   
   }
 }
 

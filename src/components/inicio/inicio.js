@@ -24,6 +24,9 @@ const Inicio = () => {
   return (
     <div className={styles['home-page']}>
       <div className={styles.content}>
+        <Link to='/login'>
+          <button className={styles['buttonL']}>login</button>
+        </Link>
         <h1>
           Bienvenidos a la Barbería
         </h1>

@@ -54,7 +54,7 @@ const Reservas = () => {
           </tbody>
         </table>
       </div>
-      <Link to="/card">
+      <Link to="/funciones">
         <buttonq className={styles['buttonq']}>Atras</buttonq>
       </Link>
     </div>

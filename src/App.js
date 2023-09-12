@@ -12,6 +12,9 @@ import Registro2 from './components/reserva/registro2.js';
 import Reservas3 from './components/ver/reservas3.js';
 import Registro3 from './components/reserva/registro3.js';
 import Comunicado from './components/comunicado/comunicado';
+import Login from './components/login/Login';
+import Funcion from './components/funciones/Funcion';
+
 
 function App() {
   return (
@@ -29,6 +32,9 @@ function App() {
       <Route path='/reservas3' element={<Reservas3/>}/>
       <Route path='/registro3' element={<Registro3/>}/>
       <Route path='/comunicado' element={<Comunicado/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/funciones' element={<Funcion/>}/>
+ 
       </Routes>
     </Router>
     </div>
