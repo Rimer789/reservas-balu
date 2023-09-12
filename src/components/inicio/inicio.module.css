@@ -76,6 +76,49 @@ h2 {
     margin-left: 35%;
   }
 }
+.comunicados-list {
+  list-style-type: none;
+  padding: 0;
+  margin-top: -100%;
+}
+.comunicado-item {
+  margin-top: 0%;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #00000079;
+  margin-left: -183%;
+  width: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fcfbfb;
+  font-weight: bold;
+  font-size: 15px;
+}
+
+h4 {
+  position: fixed;
+  margin-top: 330px;
+  font-size: 4vw;
+  margin-bottom: 20px;
+  font-family: "Spicy Rice", cursive;
+  white-space: nowrap;
+  animation: wordAppear 4s ease-out infinite;
+  font-weight: bold;
+  background: linear-gradient(to right, #ff9900, #d19e13, #c2890e, #fa9a0b);
+  background-clip: text;
+  color: transparent;
+}
+
+/* Aplicar estilos específicos para dispositivos móviles (ancho <= 768px) */
+@media (max-width: 768px) {
+  h4 {
+    position: absolute; /* Cambiar la posición para dispositivos móviles */
+    font-size: 25px;
+    margin-top: -10%; /* Ajustar la posición vertical */
+    margin-left: -50%;
+  }
+}
 
 
 

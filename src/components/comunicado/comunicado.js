@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import styles from './comunicado.module.css';
+import { Link } from 'react-router-dom';
 
 const Comunicado = () => {
   const [comunicados, setComunicados] = useState([]);
@@ -46,28 +48,40 @@ const Comunicado = () => {
   };
 
   return (
-    <div>
+    <div className={styles['container']}>
+  <div className={styles['input-container']}>
+    <textarea
+      className={styles['text-area']}
+      placeholder="Escribe tu comunicado aquí"
+      value={nuevoComunicado}
+      onChange={(e) => setNuevoComunicado(e.target.value)}
+    /> 
+    <button className={styles['button']} onClick={crearComunicado}>
+      Publicar Comunicado
+    </button>
+    <br/>
+  </div>
+  <div className={styles['comunicados-container']}>
    
-      <div>
-        <textarea
-          placeholder="Escribe tu comunicado aquí"
-          value={nuevoComunicado}
-          onChange={(e) => setNuevoComunicado(e.target.value)}
-        />
-        <button onClick={crearComunicado}>Publicar Comunicado</button>
-      </div>
-      <div>
-        <h3>Comunicados Recientes</h3>
-        <ul>
-          {comunicados.map((comunicado) => (
-            <li key={comunicado.id}>
-              {comunicado.descripcion}
-              <button onClick={() => eliminarComunicado(comunicado.id)}>Eliminar</button>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </div>
+    <ul className={styles['comunicados-list']}>
+      {comunicados.map((comunicado) => (
+        <li key={comunicado.id} className={styles['comunicado-item']}>
+          {comunicado.descripcion}
+          <button
+            className={styles['eliminar-button']}
+            onClick={() => eliminarComunicado(comunicado.id)}
+          >
+            Eliminar
+          </button>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <Link to='/funciones'> 
+  <button className={styles['buttons']}>atras</button>
+  </Link>
+</div>
+
   );
 };
 

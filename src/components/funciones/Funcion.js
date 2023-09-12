@@ -14,7 +14,12 @@ const Funcion =()=> {
         <Link to='/reservas'>
             <button className={styles['buttonL']}>mis reservas</button>
         </Link>
-       
+       <div>
+        <Link to='/'>
+            <button className={styles['buttons']}>cerrar seccion</button>
+        </Link>
+        
+       </div>
          </div>
     );
 }

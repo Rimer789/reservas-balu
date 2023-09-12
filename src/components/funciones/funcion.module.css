@@ -138,3 +138,12 @@ h1 span {
   background-color: yellow; /* Cambia el color de fondo del primer elemento */
   font-weight: bold; /* Puedes aplicar otros estilos para resaltar */
 }
+
+.buttons {
+  margin-top: 15%;
+  padding: 10px 20px;
+  background-color: #2bd6c8;
+  color: white;
+  border: none;
+  cursor: pointer;
+}

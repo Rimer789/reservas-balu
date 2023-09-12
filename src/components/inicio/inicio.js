@@ -47,10 +47,10 @@ const Inicio = () => {
       </div>
       <div>
       <div>
-        <h3>Comunicados Recientes</h3>
-        <ul>
+        <h4>Comunicados Recientes</h4>
+        <ul className={styles['comunicados-list']}>
           {comunicados.map((comunicado) => (
-            <li key={comunicado.id}>
+            <li className={styles['comunicado-item']} key={comunicado.id}>
               {comunicado.descripcion}
              
             </li>
