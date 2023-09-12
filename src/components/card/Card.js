@@ -14,7 +14,7 @@ const Card = ({ children }) => {
       <div className='card-containe'>
     <Link to="/registro">
       <button className="card">
-        <h4 class="card-header">Balu Barber</h4>
+        <h5 class="card-header">Balu Barber</h5>
         <img className="card-image" src={image1} />
       </button>
       </Link>
@@ -26,7 +26,7 @@ const Card = ({ children }) => {
        <div className='card-containe'>
         <Link to="/registro1">
       <button className="card" >
-        <h4 class="card-header" >Jhon Barber</h4>
+        <h5 class="card-header" >Jhon Barber</h5>
         <img className="card-image" src={image2} />
       </button>
       </Link>
@@ -37,7 +37,7 @@ const Card = ({ children }) => {
         <div className='card-containe'>
         <Link to="/registro2">
       <button className="card" >
-        <h4 class="card-header" >Negro Barber</h4>
+        <h5 class="card-header" >Negro Barber</h5>
         <img className="card-image" src={image3} />
       </button>
       </Link>
@@ -48,7 +48,7 @@ const Card = ({ children }) => {
         <div className='card-containe'>
         <Link to="/registro3">
       <button className="card" >
-        <h4 class="card-header" >Tika Barber</h4>
+        <h5 class="card-header" >Tika Barber</h5>
         <img className="card-image" src={image3} />
       </button>
       </Link>
