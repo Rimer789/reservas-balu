@@ -71,7 +71,7 @@ h2 {
 @media (max-width: 768px) {
   h2 {
     position: absolute; /* Cambiar la posición para dispositivos móviles */
-    font-size: 18px;
+    font-size: 25px;
     margin-top: 120%; /* Ajustar la posición vertical */
     margin-left: 35%;
   }
