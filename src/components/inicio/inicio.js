@@ -29,7 +29,7 @@ const Inicio = () => {
         </Link>
         <div>
         <h1>
-           MURDOCK LONDON       aa
+           MURDOCK LONDON      
         </h1>
         </div>
         <Link to="/card">
