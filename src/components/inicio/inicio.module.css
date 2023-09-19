@@ -137,7 +137,7 @@ h4 {
 
 
 
-.button {
+.buttone {
   display: inline-block;
   font-weight: bold;
   font-family: "Spicy Rice", cursive;
@@ -151,13 +151,13 @@ h4 {
   transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.button:hover {
+.buttone:hover {
   background: linear-gradient(to right, #ff0000, #ffffff, #000080);
   transform: scale(1.05);
 }
 
 @media (max-width: 768px) {
-  button {
+  .buttone {
     position: absolute; /* Cambiar la posición para dispositivos móviles */
     font-size: 18px;
     top: 15%; /* Ajustar la posición vertical */

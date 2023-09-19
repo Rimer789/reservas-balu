@@ -33,7 +33,7 @@ const Inicio = () => {
         </h1>
         </div>
         <Link to="/card">
-          <button className={styles['button']}>Reserva tu corte</button>
+          <button className={styles['buttone']}>Reserva tu corte</button>
         </Link>
         
       
