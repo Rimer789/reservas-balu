@@ -6,7 +6,6 @@ import { useFormik } from 'formik';
 import './registro.css';
 
 const Registro = () => {
-  // Obtén la hora actual en la zona horaria de La Paz
   const horaActualEnLaPaz = moment().tz('America/La_Paz').format('HH:mm');
 
   const [disponible, setDisponible] = useState(true);
@@ -15,8 +14,6 @@ const Registro = () => {
     const fecha = moment(values.fecha).format('YYYY-MM-DD');
     const hora = values.hora;
     const fechaHora = moment(`${fecha} ${hora}`, 'YYYY-MM-DD HH:mm').tz('America/La_Paz').format();
-
-    // Compara la fecha seleccionada con la fecha actual en La Paz
     if (moment(fechaHora).isBefore(moment().tz('America/La_Paz').format('YYYY-MM-DD HH:mm'))) {
       alert('No puedes seleccionar horas pasadas.');
       return;
