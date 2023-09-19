@@ -75,7 +75,7 @@ h2 {
     position: absolute; /* Cambiar la posición para dispositivos móviles */
     font-size: 25px;
     margin-top: 74%;
-    margin-left: 22%;
+    left: 16%;
   }
 }
 /* Estilos para la lista de comunicados */

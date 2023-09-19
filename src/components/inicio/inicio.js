@@ -36,7 +36,7 @@ const Inicio = () => {
           <button className={styles['buttone']}>Reserva tu corte</button>
         </Link>
         
-      
+      <div>
        <h2>
           estamos ubicados
           <a href={ubicacionGoogleMaps} target="_blank" rel="noopener noreferrer">
@@ -45,6 +45,7 @@ const Inicio = () => {
           </div>
         </a>
         </h2>
+        </div>
         <div>
         <h4>Comunicados Recientes</h4>
         </div>
