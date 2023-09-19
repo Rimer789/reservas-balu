@@ -54,13 +54,11 @@ const Registro = () => {
       const response = await axios.post('https://barber-production-1d18.up.railway.app/api/reservas', datos);
       console.log(response.data);
       alert('Reserva creada con éxito');
-
-      // Restablece los valores del formulario o redirige al usuario
-      // Por ejemplo, puedes redirigir al usuario a otra página después del registro
-      // history.push('/otra-pagina');
+      window.location.href = '/';
     } catch (error) {
       console.error('Error al agregar la reserva:', error);
       alert('Ya existe otra reserva para este horario');
+      
     }
   };
 

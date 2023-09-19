@@ -27,11 +27,13 @@ const Inicio = () => {
         <Link to='/login'>
           <button className={styles['buttonL']}>login</button>
         </Link>
+        <div>
         <h1>
-          Bienvenidos a la Barbería
+           MURDOCK LONDON       aa
         </h1>
+        </div>
         <Link to="/card">
-          <button className={styles['button']}>Reserva tu turno</button>
+          <button className={styles['button']}>Reserva tu corte</button>
         </Link>
         
       
