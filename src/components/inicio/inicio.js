@@ -45,11 +45,11 @@ const Inicio = () => {
           </div>
         </a>
         </h2>
-        
-      </div>
-      <div>
-      <div>
+        <div>
         <h4>Comunicados Recientes</h4>
+        </div>
+        <br/>
+        <div>
         <ul className={styles['comunicados-list']}>
           {comunicados.map((comunicado) => (
             <li className={styles['comunicado-item']} key={comunicado.id}>
@@ -59,6 +59,7 @@ const Inicio = () => {
           ))}
         </ul>
       </div>
+    
     </div>
     </div>
   );
