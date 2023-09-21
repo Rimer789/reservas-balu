@@ -49,38 +49,50 @@ const Comunicado = () => {
 
   return (
     <div className={styles['container']}>
-  <div className={styles['input-container']}>
-    <textarea
-      className={styles['text-area']}
-      placeholder="Escribe tu comunicado aquí"
-      value={nuevoComunicado}
-      onChange={(e) => setNuevoComunicado(e.target.value)}
-    /> 
-    <button className={styles['button']} onClick={crearComunicado}>
-      Publicar Comunicado
-    </button>
-    <br/>
-  </div>
-  <div className={styles['comunicados-container']}>
-   
-    <ul className={styles['comunicados-list']}>
-      {comunicados.map((comunicado) => (
-        <li key={comunicado.id} className={styles['comunicado-item']}>
-          {comunicado.descripcion}
-          <button
-            className={styles['eliminar-button']}
-            onClick={() => eliminarComunicado(comunicado.id)}
-          >
-            Eliminar
-          </button>
-        </li>
-      ))}
-    </ul>
-  </div>
-  <Link to='/funciones'> 
-  <button className={styles['buttons']}>atras</button>
-  </Link>
-</div>
+      <div className={styles['input-container']}>
+        <textarea
+          className={styles['text-area']}
+          placeholder="Escribe tu comunicado aquí"
+          value={nuevoComunicado}
+          onChange={(e) => setNuevoComunicado(e.target.value)}
+        />
+        <button className={styles['button']} onClick={crearComunicado}>
+          Publicar Comunicado
+        </button>
+        <br />
+      </div>
+      <div className={styles['comunicados-container']}>
+        <table className={styles['comunicados-table']}>
+          <thead>
+            <tr>
+              <th>Descripción</th>
+              <th>Función</th>
+            </tr>
+          </thead>
+          <tbody>
+            {comunicados.map((comunicado) => (
+              <tr key={comunicado.id} >
+                <td>{comunicado.descripcion}</td>
+                <td>
+                  <button
+                    className={styles['eliminar-button']}
+                    onClick={() => eliminarComunicado(comunicado.id)}
+                  >
+                    Eliminar
+                  </button>
+                  
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+
+      <Link to='/funciones'>
+        <button className={styles['buttons']}>atras</button>
+      </Link>
+    </div>
 
   );
 };

@@ -61,14 +61,43 @@
     align-items: center;
   }
   
-  .eliminar-button {
-    margin-top: 5%;
-    padding: 5px 10px;
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    cursor: pointer;
-  }
+  
+  /* Estilo para la tabla */
+/* Estilo para la tabla */
+.comunicados-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+  margin-top: 10%;
+}
+
+/* Estilo para las celdas de la tabla */
+.comunicados-table th,
+.comunicados-table td {
+  border: 1px solid #ccc;
+  padding: 8px;
+  text-align: left;
+
+}
+
+/* Estilo para las filas impares */
+.comunicados-table tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
+}
+
+/* Estilo para el botón "Eliminar" */
+.eliminar-button {
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.eliminar-button:hover {
+  background-color: #cc0000;
+}
+
   
   /* Estilos para dispositivos móviles */
   @media screen and (max-width: 767px) {
@@ -78,8 +107,8 @@
     }
   
     .eliminar-button {
-      margin-left: 70%;
-      margin-top: 0; /* Elimina el margen superior */
+      margin-left: 0%;
+      margin-top: -5%; /* Elimina el margen superior */
     }
   }
   
