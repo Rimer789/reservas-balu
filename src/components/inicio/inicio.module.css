@@ -74,7 +74,7 @@ h2 {
   h2 {
     position: absolute; /* Cambiar la posición para dispositivos móviles */
     font-size: 25px;
-    margin-top: 74%;
+    margin-top: 110%;
     left: 16%;
   }
 }
@@ -128,7 +128,7 @@ h4 {
   h4 {
     position: absolute; /* Cambiar la posición para dispositivos móviles */
     font-size: 25px;
-    margin-top: 24%;
+    margin-top: 13%;
     margin-left: 0%;
     background-color: rgba(145, 137, 137, 0.5);
   }
@@ -160,7 +160,7 @@ h4 {
   .buttone {
     position: absolute; /* Cambiar la posición para dispositivos móviles */
     font-size: 18px;
-    top: 15%; /* Ajustar la posición vertical */
+    top: 8%; /* Ajustar la posición vertical */
     left: 10%;
   }
 }
@@ -200,4 +200,17 @@ h4 {
 .highlight {
   background-color: yellow; /* Cambia el color de fondo del primer elemento */
   font-weight: bold; /* Puedes aplicar otros estilos para resaltar */
+}
+
+.image {
+  border-radius: 10px;
+  margin: 5%;
+  box-shadow: 0 0 10px #e3e3e3, 0 0 10px #e59d60, 0 0 15px #ff6500, 0 0 20px #ec9e38, 0 0 25px #ff9900, 0 0 30px #ff7f00;
+  max-width: 100%;
+  max-height: 30vh;
+  transition: transform 0.5s ease; /* Agregar transición para el efecto de deslizamiento */
+}
+
+.buttonImage {
+  margin-top: 10px;
 }
